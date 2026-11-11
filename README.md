@@ -95,7 +95,7 @@ Complete the core stages in order. A student who missed class can follow these s
 
 ## Submitting Your Work
 
-This is formative practice. Commit your source, tests and blank `.env.example` files to your own lab repository. Before committing, run `git status --short` and `git diff --cached` and check that no secret, token, database or private evidence is staged. Bring your test results, access matrix and a short explanation of one access decision to the homework review. Follow any separate hand-in instructions given by your lecturer; this README does not create a Moodle submission requirement.
+This is formative practice. Commit your source, tests and blank `.env.example` files to your own lab repository. Before committing, run `git status --short` and `git diff --cached` and check that no secret, token, database or private evidence is staged. Push commits back to GitHub. Bring your test results, access matrix and a short explanation of one access decision to the homework review.
 
 ---
 
