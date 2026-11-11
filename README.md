@@ -2,7 +2,7 @@
 
 Build small FastAPI applications from blank files. First verify API keys and JWTs; then use a database to decide what an authenticated user may read. There is no CRUD API to build. Every exercise moves from an explained walkthrough to a mandatory independent task. Challenges are optional.
 
-**Time**: 45 min API keys, 30 min JWTs, 55 min authorisation, plus 60 min homework. Tutor explanation, discussion and breaks sit outside these practical estimates. Challenges take additional time.
+**Time**: 45 min API keys, 30 min JWTs, 55 min authorisation, plus 60 min homework. Tutor explanation, discussion and breaks sit outside these practical estimates. Challenges take additional time.  
 **Prerequisites**: Python functions, imports and virtual environments; FastAPI routes and dependencies; HTTP headers/status codes; basic SQLAlchemy sessions and pytest.
 
 [skip to exercises](#exercises)
