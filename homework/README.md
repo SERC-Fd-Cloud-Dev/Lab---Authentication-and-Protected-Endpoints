@@ -9,11 +9,11 @@ Build a small game API from blank application files. Obtain real movie details f
 
 These are **your FastAPI endpoints**. The game uses one fixed server-side movie ID. Shape notation describes JSON keys/types, not Python code. Public means that your API does not require an incoming credential; its outgoing TMDB request still needs its own key.
 
-| Stage | Method and endpoint | Request data / credential | Successful response data shape | Protected? | Expected statuses |
-|---|---|---|---|---|---|
-| Guided application | `GET /movie/clue` | No body or credential | `{year: integer, genres: string[], runtime: integer or null}` | **No — public clues** | 200; 502 upstream failure; 503 upstream rate limit; 504 timeout |
-| Independent core | `GET /movie/answer` | No body; `X-API-Key: <game key>` | `{title: string}` | **Yes — valid GAME_API_KEY** | 200; 401 missing/wrong game key; 502/503/504 upstream failure |
-| Optional challenge | `POST /movie/guess` | JSON body: `{title: string}` (1–200 characters) | `{correct: boolean}` | **No — public guessing** | 200 for right or wrong guess; 422 invalid body; 502/503/504 upstream failure |
+| Method and endpoint | Request data / credential | Successful response data shape | Protected? | Expected statuses |
+|---|---|---|---|---|
+| `GET /movie/clue` | No body or credential | `{year: integer, genres: string[], runtime: integer or null}` | **No — public clues** | 200; 502 upstream failure; 503 upstream rate limit; 504 timeout |
+| `GET /movie/answer` | No body; `X-API-Key: <game key>` | `{title: string}` | **Yes — valid GAME_API_KEY** | 200; 401 missing/wrong game key; 502/503/504 upstream failure |
+| `POST /movie/guess` | JSON body: `{title: string}` (1–200 characters) | `{correct: boolean}` | **No — public guessing** | 200 for right or wrong guess; 422 invalid body; 502/503/504 upstream failure |
 
 Authentication/integration errors use `{detail: string}`. FastAPI body-validation errors use `{detail: array}`. A rejected answer request must make **zero TMDB calls**. The clue never returns a title, movie ID, overview or raw TMDB object.
 

@@ -11,13 +11,13 @@ A signed token can carry a subject identifier and an expiry. You will verify tho
 
 All requests below use **no body**. Send credentials in `Authorization: Bearer <token>`. A valid token has a verified signature and the required valid `sub`, `exp`, `iss` and `aud` claims. In Swagger's Authorize box, enter only the token.
 
-| Stage | Method and endpoint | Request data / credential | Successful response data shape | Protected? | Expected statuses |
-|---|---|---|---|---|---|
-| Walkthrough | `GET /public` | None | `{message: string}` | **No** | 200 |
-| Walkthrough | `GET /me` | Bearer token | `{subject: string}` | **Yes — valid JWT** | 200; 401 missing/invalid token |
-| Guided application | `GET /token-info` | Bearer token | `{issuer: string, audience: string}` | **Yes — valid JWT** | 200; 401 missing/invalid token |
-| Independent core | `GET /badge` | Bearer token | Verified subject plus a message, e.g. `{subject: string, badge: string}`; choose and document your field names | **Yes — valid JWT** | 200; 401 missing, expired, incomplete or wrongly signed token |
-| Optional challenge | `GET /preview` | Bearer token with `scope` containing the exact space-delimited value `read:preview` | `{preview: string}` | **Yes — valid JWT and required scope** | 200; 401 missing/invalid token; 403 valid token without required scope |
+| Method and endpoint | Request data / credential | Successful response data shape | Protected? | Expected statuses |
+|---|---|---|---|---|
+| `GET /public` | None | `{message: string}` | **No** | 200 |
+| `GET /me` | Bearer token | `{subject: string}` | **Yes — valid JWT** | 200; 401 missing/invalid token |
+| `GET /token-info` | Bearer token | `{issuer: string, audience: string}` | **Yes — valid JWT** | 200; 401 missing/invalid token |
+| `GET /badge` | Bearer token | Verified subject plus a message, e.g. `{subject: string, badge: string}`; choose and document your field names | **Yes — valid JWT** | 200; 401 missing, expired, incomplete or wrongly signed token |
+| `GET /preview` | Bearer token with `scope` containing the exact space-delimited value `read:preview` | `{preview: string}` | **Yes — valid JWT and required scope** | 200; 401 missing/invalid token; 403 valid token without required scope |
 
 Error responses use `{detail: string}`. No response contains the raw token or signing secret. The local issuer is a command-line fixture, **not an API endpoint**. There is no login or CRUD route to implement.
 

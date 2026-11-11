@@ -11,13 +11,13 @@ A public information route is harmless, but an internal status route should requ
 
 Use this table as your build and test checklist. Data shapes describe JSON keys and types; they are not Python code. All requests use **no body**. Public endpoints do not check credentials. Protected endpoints accept the key **only in the `X-API-Key` header**, never in the URL.
 
-| Stage | Method and endpoint | Request data / credential | Successful response data shape | Protected? | Expected statuses |
-|---|---|---|---|---|---|
-| Walkthrough | `GET /public` | None | `{message: string}` | **No** | 200 |
-| Walkthrough | `GET /protected` | `X-API-Key: <local lab key>` | `{message: string}` | **Yes — valid lab key** | 200; 401 missing/wrong key |
-| Guided application | `GET /status` | `X-API-Key: <local lab key>` | `{status: string}` | **Yes — valid lab key** | 200; 401 missing/wrong key |
-| Independent core | `GET /lab-info` | `X-API-Key: <local lab key>` | Object with two non-sensitive strings, e.g. `{lab: string, access: string}`; choose and document your field names | **Yes — valid lab key** | 200; 401 missing/wrong key or key supplied only in query |
-| Optional challenge | Same protected endpoints | Current or next configured key in `X-API-Key` | Same shapes as above | **Yes — either configured rotation key** | 200 for either key; 401 for every other/missing key |
+| Method and endpoint | Request data / credential | Successful response data shape | Protected? | Expected statuses |
+|---|---|---|---|---|
+| `GET /public` | None | `{message: string}` | **No** | 200 |
+| `GET /protected` | `X-API-Key: <local lab key>` | `{message: string}` | **Yes — valid lab key** | 200; 401 missing/wrong key |
+| `GET /status` | `X-API-Key: <local lab key>` | `{status: string}` | **Yes — valid lab key** | 200; 401 missing/wrong key |
+| `GET /lab-info` | `X-API-Key: <local lab key>` | Object with two non-sensitive strings, e.g. `{lab: string, access: string}`; choose and document your field names | **Yes — valid lab key** | 200; 401 missing/wrong key or key supplied only in query |
+| Same protected endpoints | Current or next configured key in `X-API-Key` | Same shapes as above | **Yes — either configured rotation key** | 200 for either key; 401 for every other/missing key |
 
 Authentication errors use `{detail: string}` with a generic message. Never put the key in any response. No create, update or delete endpoints are required.
 

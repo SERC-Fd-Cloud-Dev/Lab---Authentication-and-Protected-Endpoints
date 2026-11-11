@@ -11,13 +11,13 @@ Knowing who made a request is only the first decision. In a fictional training c
 
 All requests use **no body**. Protected endpoints first verify `Authorization: Bearer <token>`, resolve its `sub` to a database user, and check the current account status. A role sent by the client never replaces the database role.
 
-| Stage | Method and endpoint | Request data / credential | Successful response data shape | Protected? / access rule | Expected statuses |
-|---|---|---|---|---|---|
-| Walkthrough | `GET /public` | None | `{message: string}` | **No** | 200 |
-| Walkthrough | `GET /me` | Bearer token | `{id: string, username: string, role: string}` | **Yes — known, active user** | 200; 401 missing/invalid token or unknown subject; 403 inactive account |
-| Walkthrough | `GET /staff` | Bearer token | `{message: string}` | **Yes — active lecturer** | 200; 401 as above; 403 inactive account or other role |
-| Independent core | `GET /profiles/{user_id}` | Path: `user_id` string, e.g. `u1`; Bearer token | `{id: string, username: string}` | **Yes — active owner OR lecturer** | 200; 401 as above; 403 inactive/forbidden; 404 target absent after permission succeeds |
-| Optional challenge | `GET /reports/summary` | Bearer token | `{active_accounts: integer}` | **Yes — active reporter OR lecturer** | 200; 401 as above; 403 inactive account or other role |
+| Method and endpoint | Request data / credential | Successful response data shape | Protected? / access rule | Expected statuses |
+|---|---|---|---|---|
+| `GET /public` | None | `{message: string}` | **No** | 200 |
+| `GET /me` | Bearer token | `{id: string, username: string, role: string}` | **Yes — known, active user** | 200; 401 missing/invalid token or unknown subject; 403 inactive account |
+| `GET /staff` | Bearer token | `{message: string}` | **Yes — active lecturer** | 200; 401 as above; 403 inactive account or other role |
+| `GET /profiles/{user_id}` | Path: `user_id` string, e.g. `u1`; Bearer token | `{id: string, username: string}` | **Yes — active owner OR lecturer** | 200; 401 as above; 403 inactive/forbidden; 404 target absent after permission succeeds |
+|  `GET /reports/summary` | Bearer token | `{active_accounts: integer}` | **Yes — active reporter OR lecturer** | 200; 401 as above; 403 inactive account or other role |
 
 Errors use `{detail: string}`. Check permission before looking up the requested profile: a student requesting another ID receives 403 whether or not that target exists. The profile response intentionally omits role and active status.
 
