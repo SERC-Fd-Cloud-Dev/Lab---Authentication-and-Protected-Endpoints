@@ -99,6 +99,4 @@ This is formative practice. Commit your source, tests and blank `.env.example` f
 
 ---
 
-> **AI use notice**: Attempt each task and use the hints before seeking automated help. If AI assistance is permitted by your lecturer for this formative lab, ask for explanations or debugging clues, verify its advice and record what helped. Do not upload secrets or request a completed independent task. This notice does not change the separate assessed-work rules.
-
 Spot any issues? Please [submit an issue](https://github.com/SERC-Fd-Cloud-Dev/Lab---Authentication-and-Protected-Endpoints/issues) or [pull request](https://github.com/SERC-Fd-Cloud-Dev/Lab---Authentication-and-Protected-Endpoints/pulls).
