@@ -1,0 +1,1 @@
+Before launch, set LAB_API_KEY_NEXT in the core .env to a new random value. During the rotation window both keys work. End the window by replacing LAB_API_KEY with the new value and returning to the core dependency. Deleting a tracked key does not revoke it.

@@ -1,0 +1,11 @@
+{
+  "title": "The Hidden Signal",
+  "release_date": "2020-02-03",
+  "genres": [
+    {
+      "id": 1,
+      "name": "Mystery"
+    }
+  ],
+  "runtime": 101
+}
