@@ -1,0 +1,87 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/universal
+{
+    "name": "Default Linux Universal",
+    // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+    "image": "mcr.microsoft.com/devcontainers/universal:6-linux",
+
+    // Features to add to the dev container. More info: https://containers.dev/features.
+    // "features": {},
+
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    // "forwardPorts": [],
+
+    // Use 'postCreateCommand' to run commands after the container is created.
+    "postCreateCommand": ".devcontainer/scripts/check-features.sh", //&& code --install-extension https://github.com/SERC-Cloud-Dev-DF2A-2526/VS-Code-Extensions/releases/download/v0.0.2/services-manager-0.0.2.vsix",
+
+    // Configure tool-specific properties.
+    "customizations": {
+        "vscode": {
+            // Set *default* container specific settings.json values on container create.
+            "settings": {
+                "sqltools.connections": [
+                    {
+                        "mysqlOptions": {
+                            "authProtocol": "default",
+                            "enableSsl": "Disabled"
+                        },
+                        "ssh": "Disabled",
+                        "previewLimit": 50,
+                        "server": "localhost",
+                        "port": 3306,
+                        "driver": "MariaDB",
+                        "name": "MariaDB",
+                        "username": "root",
+                        "password": "P@ssw0rd",
+                        "database": "mysql"
+                    },
+                    {
+                        "ssh": "Disabled",
+                        "previewLimit": 50,
+                        "server": "localhost",
+                        "port": 5432,
+                        "driver": "PostgreSQL",
+                        "name": "PostgreSQL",
+                        "username": "postgres",
+                        "database": "postgres",
+                        "password": "P@ssw0rd"
+                    },
+                    {
+                        "connectionTimeout": 15,
+                        "mssqlOptions": {
+                            "appName": "SQLTools",
+                            "useUTC": true,
+                            "encrypt": true,
+                            "trustServerCertificate": true
+                        },
+                        "ssh": "Disabled",
+                        "previewLimit": 50,
+                        "server": "localhost",
+                        "port": 1433,
+                        "driver": "MSSQL",
+                        "name": "SQLServer",
+                        "username": "sa",
+                        "password": "P@ssw0rd"
+                    }
+                ]
+            },
+
+            // Add the IDs of extensions you want installed when the container is created.
+            "extensions": [
+                "ms-python.python",
+                // "ms-dotnettools.csdevkit",
+                "redhat.vscode-yaml",
+                "github.vscode-github-actions",
+                "ms-azuretools.vscode-containers",
+                "mtxr.sqltools",
+                "mtxr.sqltools-driver-mysql",
+                "mtxr.sqltools-driver-pg",
+                "mtxr.sqltools-driver-sqlite",
+                "mtxr.sqltools-driver-mssql"
+            ]
+        }
+    }
+
+    // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+    // "remoteUser": "root"
+}

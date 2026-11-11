@@ -1,0 +1,68 @@
+{
+    // -----------------------------
+    // GitHub Copilot – Student-safe
+    // -----------------------------
+    // Disable inline autocomplete suggestions from Copilot
+    // "github.copilot.inlineSuggest.enable": false,
+    // Optionally, keep general inline suggestions off too
+    // "editor.inlineSuggest.enabled": false,
+    // Keep Copilot Chat enabled so students can ASK for help,
+    // but they won't get full auto-completed solutions as they type.
+    "github.copilot.chat.enable": true,
+    // Make it clear in the UI that Copilot is mainly for chat
+    // "github.copilot.enable": {
+    //     "*": true,
+    //     "plaintext": false,
+    //     "markdown": true,
+    //     "scminput": false
+    // },
+    // Experimental settings
+    // Use organisation custom agents
+    "github.copilot.chat.customAgents.showOrganizationAndEnterpriseAgents": true,
+    // Confirmed settings
+    "github.copilot.chat.organizationCustomAgents.enabled": true,
+    "github.copilot.chat.organizationInstructions.enabled": true,
+    "github.copilot.nextEditSuggestions.enabled": false,
+    // -----------------------------
+    // General editing discipline
+    // -----------------------------
+    // Encourage students to read errors and fix them themselves
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": true
+    },
+    // Help keep code tidy without changing logic
+    "editor.formatOnSave": true,
+    // Make whitespace and indentation clear
+    "editor.renderWhitespace": "boundary",
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    // Show minimap & breadcrumbs to help navigate larger projects
+    "editor.minimap.enabled": true,
+    "breadcrumbs.enabled": true,
+    // -----------------------------
+    // Testing & Problems
+    // -----------------------------
+    // Encourage running tests and checking Problems pane
+    "testing.automaticallyOpenPeekView": "failure",
+    "problems.autoReveal": true,
+    // -----------------------------
+    // Recommended extensions hints
+    // (optional, for the Cloud Dev module)
+    // -----------------------------
+    "extensions.recommendations": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-azuretools.vscode-docker",
+        "github.copilot",
+        "github.copilot-chat",
+        "esbenp.prettier-vscode",
+        "ms-vscode.vscode-typescript-next"
+    ],
+    "python-envs.defaultEnvManager": "ms-python.python:system",
+    "python-envs.pythonProjects": [],
+    "editor.inlineSuggest.enabled": false,
+    "github.copilot.completions.chat.enabled": false,
+    "github.copilot.inlineSuggest.enable": false
+}
