@@ -1,18 +1,27 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/universal
 {
-    "name": "Default Linux Universal",
+    "name": "Cloud Development Security Lab",
     // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-    "image": "mcr.microsoft.com/devcontainers/universal:6-linux",
+    "image": "ghcr.io/serc-computing/devcontainers/python-api:1",
 
     // Features to add to the dev container. More info: https://containers.dev/features.
     // "features": {},
 
     // Use 'forwardPorts' to make a list of ports inside the container available locally.
-    // "forwardPorts": [],
+    "forwardPorts": [
+        8000
+    ],
+    "portsAttributes": {
+        "8000": {
+            "label": "FastAPI",
+            "onAutoForward": "notify",
+            "visibility": "private"
+        }
+    },
 
     // Use 'postCreateCommand' to run commands after the container is created.
-    "postCreateCommand": ".devcontainer/scripts/check-features.sh", //&& code --install-extension https://github.com/SERC-Cloud-Dev-DF2A-2526/VS-Code-Extensions/releases/download/v0.0.2/services-manager-0.0.2.vsix",
+    "postCreateCommand": ".devcontainer/scripts/check-features.sh && .venv/bin/python -m pip install -r requirements.txt", //&& code --install-extension https://github.com/SERC-Cloud-Dev-DF2A-2526/VS-Code-Extensions/releases/download/v0.0.2/services-manager-0.0.2.vsix",
 
     // Configure tool-specific properties.
     "customizations": {
